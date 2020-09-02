@@ -99,7 +99,7 @@ class WebAppFingerprinter(object):
             self._host_down_errors = 0
             hash = hashlib.md5(data + path).hexdigest()
             
-            if self.path_nodes.has_key(hash):
+            if self.path_nodes[path].has_key(hash):
                 possible_vers = self.path_nodes[path][hash]
                 self.logger.logFileHit(path, possible_vers, None, None, False)
                 return possible_vers
@@ -252,7 +252,7 @@ class WebAppGuesser(object):
             self._host_down_errors = 0
             hash = hashlib.md5(data + path).hexdigest()
             
-            if path_nodes.has_key(hash):
+            if path_nodes[path].has_key(hash):
                 possible_vers = path_nodes[path][hash]
                 self.logger.logFileHit(path, possible_vers, None, None, False)
                 return possible_vers
